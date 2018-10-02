@@ -1,0 +1,10 @@
+[package]
+name = "rabbitmq"
+version = "0.1.0"
+authors = ["Volodymyr Yevtushenko <voloyev@vivaldi.net>"]
+
+[dependencies]
+tokio = "*"
+lapin-futures = "*"
+log = "*"
+futures = "*"
