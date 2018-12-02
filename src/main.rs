@@ -23,11 +23,13 @@ fn main() {
                     // connect() returns a future of an AMQP Client
                     // that resolves once the handshake is done
                     lapin::client::Client::connect(stream, ConnectionOptions::default())
-                }).and_then(|(client, _ /* heartbeat */)| {
+                })
+                .and_then(|(client, _ /* heartbeat */)| {
                     // create_channel returns a future that is resolved
                     // once the channel is successfully created
                     client.create_channel()
-                }).and_then(|channel| {
+                })
+                .and_then(|channel| {
                     let id = channel.id;
                     info!("created channel with id: {}", id);
 
@@ -48,5 +50,6 @@ fn main() {
                             )
                         })
                 }),
-        ).expect("runtime failure");
+        )
+        .expect("runtime failure");
 }
